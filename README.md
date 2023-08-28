@@ -1,41 +1,34 @@
-# Vuetiful Webpack App (vuetiful-webpack)
+## Create new Quasar webpack project with Quasar-Cli - https://quasar.dev/start/quasar-cli
 
-Vuetiful Webpack App
+## And follow vuetiful getting started - https://vuetiful.dev/docs/getting-started
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
+```yarn add @code-coaching/vuetiful```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+```yarn add -D tailwindcss postcss autoprefixer prettier-plugin-tailwindcss```
 
+```npx tailwindcss init```
 
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
+```change tailwind.config.js```
 
+```create prettier.config.js```
 
-### Format the files
-```bash
-yarn format
-# or
-npm run format
-```
+```change postcss.config.js```
 
+```change quasar.config.js - only remove app.css, don't need dedupe 'vue' (until to compile this started project...)```
 
+```change App.vue```
 
-### Build the app for production
-```bash
-quasar build
-```
+## If the project is compiled with 'quasar dev', an error is raised:
 
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js).
+```'...\node_modules\@code-coaching\vuetiful\src\styles\variants.css `@layer components` is used but no matching `@tailwind components` directive is present.'```
+
+## Add 'postcss-import': https://github.com/tailwindlabs/tailwindcss/discussions/5934
+
+```yarn add -D postcss-import```
+
+## and include plugin postcss.config.cjs:
+
+```plugins: [ ... require('postcss-import'), ... ]```
+
+## and 'quasar dev' worked...
+
